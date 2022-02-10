@@ -23,8 +23,8 @@ contract Election {
     //private because we donot want others to add candiate to the mapping
     // first run this function
     constructor() public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        addCandidate("Democratic");
+        addCandidate("Republican");
     }
 
     // //voters mapping
