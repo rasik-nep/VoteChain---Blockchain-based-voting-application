@@ -1,10 +1,30 @@
 .content {
-  color: aqua;
+  color: red;
 }
+/* .image {
+  height: 100em;
+} */
 
 body {
-  background: #a8f0e5;
+  /* background-image: url("flag.jpg"); */
+  /* no-repeat center center fixed; */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black; */
+  background-color: aliceblue;
+}
+
+.image {
+  background-image: url("flag.jpg");
+  /* height: 10px; */
+  background-size: 100rem;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: black;
+  background-color: aliceblue;
+  /* height: 10px; */
 }
 
 .initial {

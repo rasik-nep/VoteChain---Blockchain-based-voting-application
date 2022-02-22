@@ -23,8 +23,8 @@ contract Election {
     //private because we donot want others to add candiate to the mapping
     // first run this function
     constructor() public {
-        addCandidate("Democratic");
-        addCandidate("Republican");
+        addCandidate("Congress");
+        addCandidate("CPN UML");
     }
 
     // //voters mapping
