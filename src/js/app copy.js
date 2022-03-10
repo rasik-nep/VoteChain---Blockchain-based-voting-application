@@ -1,4 +1,6 @@
 // object with several objects
+
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -8,8 +10,7 @@ App = {
   // initialize the app with web3
   init: function() {
     return App.initWeb3();
-  },
-
+  },  
   //initisalize web3
   // connects the client side application to the blockchain
   initWeb3: function() {
@@ -83,7 +84,7 @@ App = {
 	  }).then(function(hasVoted){
 		  // Do not allow a user to vote
 		  if(hasVoted){
-			  $('form').hide();
+			  $('#content').hide();
 		  }
 	  });
 	  
@@ -109,7 +110,8 @@ App = {
     });
 
     // Load contract data
-    App.contracts.Election.deployed().then(function(instance) {//get copy of the deplyoed contract
+    App.contracts.Election.deployed().then(function(instance) {
+      //get copy of the deplyoed contract
       electionInstance = instance;
       return electionInstance.candidatesCount();
     }).then(function(candidatesCount) {
@@ -126,43 +128,31 @@ App = {
           var name = candidate[1];
           var voteCount = candidate[2];
 
-          // Render candidate Result
-           var candidateTemplate = "<tr><th>"+id+"</th><td>"+name+"</td><td id='vc_"+id+"'>"+voteCount+"</td></tr>";
-          candidatesResults.append(candidateTemplate);
-
-          // Render candidate ballot option
-          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-          candidatesSelect.append(candidateOption);
-        });
+          var canvasElement = document.getElementById('myChart');          
+          var config ={
+            type: 'bar',
+            data: {
+                labels: [name],
+                datasets: [{
+                  label:'Votes',
+                  backgroundColor: ['red','blue'],
+                  data:[voteCount,0,10]
+                }],
+              },
+            };
+            // var myChart = new Chart(canvasElement,config)
+            new Chart(canvasElement,config);
+          });
       }
-      
       return electionInstance.voters(App.account);
-    }).then(function(hasVoted) {
-      // Do not allow a user to vote
-      if(hasVoted) {
-        $('form').
-        hide();
-      }
-      loader.hide();
-      content.show();
-    }).catch(function(error) {
-      console.warn(error);
+      }).then(function(hasVoted) {
+        loader.hide();
+        content.show();
+      }).catch(function(error) {
+        console.warn(error);
     });
   },
-
-  //for voting
-  castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
-    App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
-    }).then(function(result) {
-      // Wait for votes to update
-      $("#content").hide();
-      $("#loader").show();
-    }).catch(function(err) {
-      console.error(err);
-    });
-  }
+    
 };
 
 // initialize the app when the window loads
@@ -170,4 +160,4 @@ $(function() {
   $(window).load(function() {
     App.init();
   });
-});
+})

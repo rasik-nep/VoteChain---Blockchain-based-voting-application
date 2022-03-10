@@ -9,64 +9,80 @@
     <title>Election Results</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+<link rel="stylesheet" href="asset/fonts/font-awesome.min.css">
+
 </head>
 
 <body>
-    <div class="container" style="width: 650px;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="initial text-center">Election Board</h1>
-                <!-- <hr /> -->
-                <br />
-<div class="image">
-    
-</div>
-                <!-- loder when we are loading the files -->
-                <div id="loader">
-                    <p class="text-center">Loading...</p>
+    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+        <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand" href="#">RPR</a><button data-bs-toggle="collapse"
+                    class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i
+                        class="fa fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item nav-link"><a class="nav-link " href="index.html">About</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="home.html">VOTE</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link" href="result.html">RESULT</a></li>
+                    </ul>
                 </div>
+            </div>
+        </nav>
+<header class="masthead" ">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="brand-heading">ELECTION BOARD</h1>
 
-
-                <div id="content" style="display: none;">
-                    <!-- content section when we list candidates -->
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">SN</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Votes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="candidatesResults">
-                        </tbody>
-                    </table>
-                    <hr />
-
-                    <!-- form to vote -->
-                    <form onSubmit="App.castVote(); return false;">
-                        <div class="form-group">
-                            <label for="candidatesSelect">Select Candidate</label>
-                            <select class="form-control" id="candidatesSelect">
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Vote</button>
-                        <hr />
-                    </form>
-
-                    <!-- to display the current address connected to our application -->
-                    <p id="accountAddress" class="text-center"></p>
                 </div>
             </div>
         </div>
+    </div>
+</header>
+
+    <!-- loder when we are loading the files -->
+    <div id="loader">
+        <p class="text-center">Loading...</p>
+    </div>
+
+
+    <div id="content" style="display: none;font-size:xx-large; padding: 3em;">
+        <!-- content section when we list candidates -->
+        <table class="table table-hover table-sm table-dark" >
+            <thead >
+                <tr>
+                    <th scope="col">SN</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Votes</th>
+                </tr>
+            </thead>
+            <tbody id="candidatesResults">
+            </tbody>
+        </table>
+        <hr />
+
+        <!-- form to vote -->
+        <form onSubmit="App.castVote(); return false;" style="font-size:xx-large; padding: 1em;">
+            <div class="form-group">
+                <label for="candidatesSelect">Select Candidate</label>
+                <select class="form-control" id="candidatesSelect">
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Vote</button>
+            <hr />
+        </form>
+
+        <!-- to display the current address connected to our application -->
+        <p id="accountAddress" class="text-center"></p>
+        </div>
+        </div>
+    </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -76,6 +92,9 @@
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
+
+    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/grayscale.js"></script>
 </body>
 
 </html>
