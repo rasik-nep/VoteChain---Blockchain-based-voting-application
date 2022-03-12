@@ -127,7 +127,7 @@ App = {
           var voteCount = candidate[2];
 
           // Render candidate Result
-           var candidateTemplate = "<tr><th>"+id+"</th><td>"+name+"</td><td id='vc_"+id+"'>"+voteCount+"</td></tr>";
+           var candidateTemplate = "<tr><th>"+id+"</th><td>"+name+"</td></td></tr>";
           candidatesResults.append(candidateTemplate);
 
           // Render candidate ballot option
@@ -140,8 +140,7 @@ App = {
     }).then(function(hasVoted) {
       // Do not allow a user to vote
       if(hasVoted) {
-        $('form').
-        hide();
+        $('form').hide();
       }
       loader.hide();
       content.show();

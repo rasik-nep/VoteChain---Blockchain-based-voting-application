@@ -1,11 +1,12 @@
 // object with several objects
-
-
+let labels =[''];
+let data =[0]
+let backgroundColors = ['red','red','red']
 App = {
   web3Provider: null,
   contracts: {},
   account: '0x0',
-  hasVoted: false,
+  hasVoted: true,
 
   // initialize the app with web3
   init: function() {
@@ -83,7 +84,7 @@ App = {
 	  return electionInstance.voters(App.account);
 	  }).then(function(hasVoted){
 		  // Do not allow a user to vote
-		  if(hasVoted){
+		  if(!hasVoted){
 			  $('#content').hide();
 		  }
 	  });
@@ -128,17 +129,40 @@ App = {
           var name = candidate[1];
           var voteCount = candidate[2];
 
+          labels= labels.concat([name.toString()]);
+          data = data.concat([voteCount.toNumber()])
+
           var canvasElement = document.getElementById('myChart');          
           var config ={
             type: 'bar',
             data: {
-                labels: [name],
+                labels: labels,
                 datasets: [{
                   label:'Votes',
-                  backgroundColor: ['red','blue'],
-                  data:[voteCount,0,10]
+                  backgroundColor: backgroundColors,
+                  data:data
                 }],
               },
+                  options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                  
+                    beginAtZero:true
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    fontSize: 35
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 40
+                }
+            }]
+        }
+    }
             };
             // var myChart = new Chart(canvasElement,config)
             new Chart(canvasElement,config);
